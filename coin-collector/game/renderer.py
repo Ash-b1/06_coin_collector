@@ -12,12 +12,16 @@ COLOR_PLAYER = (80, 180, 255)
 COLOR_TEXT = (255, 255, 255)
 
 
-def draw_scene(surface, player, coins):
+def draw_scene(surface, player, coins,obstacles,game_over=False):
     surface.fill(COLOR_BG)
     for coin in coins:
         pygame.draw.circle(surface, coin.color, (int(coin.x), int(coin.y)), coin.radius)
-    pygame.draw.rect(surface, COLOR_PLAYER, player.get_rect(), border_radius=4)
 
+    for obstacle in obstacles:
+        pygame.draw.polygon(surface,obstacle.color,obstacle.get_points())
+
+    if not game_over:
+        pygame.draw.rect(surface,COLOR_PLAYER,player.get_rect(),border_radius=4)
 
 def draw_text(surface, font, text, pos, color=COLOR_TEXT):
     surface.blit(font.render(text, True, color), pos)
