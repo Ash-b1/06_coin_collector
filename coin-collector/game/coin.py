@@ -7,7 +7,7 @@ import pygame
 
 
 class Coin:
-    def __init__(self, x, y, radius=12, value=1, color=(230, 190, 60)):
+    def __init__(self, x, y,value, color,radius=12):
         self.x = x
         self.y = y
         self.radius = radius
